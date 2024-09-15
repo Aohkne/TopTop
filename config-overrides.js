@@ -1,4 +1,6 @@
-module.exports = function override(config, env) {
-    //do stuff with the webpack config...(to rewrite webpack)
-    return config;
-}
+//(to rewrite webpack)
+const { override, useBabelRc } = require("customize-cra");
+
+module.exports = override(
+    useBabelRc()
+);
