@@ -3,7 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import { Link } from 'react-router-dom';
 
+import routesConfig from '~/config/routes';
 import Button from '~/components/Button';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
@@ -33,14 +35,36 @@ const MENU_ITEMS = [
             title: 'Language',
             data: [
                 {
-                    type: 'language',
                     code: 'en',
-                    title: 'English',
+                    title: 'English', // United States, Canada, Australia, etc.
                 },
                 {
-                    type: 'language',
                     code: 'vi',
-                    title: 'Tiếng Việt',
+                    title: 'Tiếng Việt', // Vietnam
+                },
+                {
+                    code: 'fi',
+                    title: 'Suomi', // Finland
+                },
+                {
+                    code: 'no',
+                    title: 'Norsk', // Norway
+                },
+                {
+                    code: 'se',
+                    title: 'Svenska', // Sweden
+                },
+                {
+                    code: 'dk',
+                    title: 'Dansk', // Denmark
+                },
+                {
+                    code: 'ch',
+                    title: 'Schweizerdeutsch', // Switzerland (Swiss German)
+                },
+                {
+                    code: 'nl',
+                    title: 'Nederlands', // Netherlands
                 },
             ],
         },
@@ -98,7 +122,9 @@ function Header() {
     return (
         <header className={cx('wrapper')}>
             <div className={cx('inner')}>
-                <img src={images.logo} alt="Tiktok" />
+                <Link to={routesConfig.home} className={cx('logo-link')}>
+                    <img src={images.logo} alt="Tiktok" />
+                </Link>
 
                 {/* Search */}
                 <Search />
